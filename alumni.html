@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Untitled design (1).png">
+    <title>SMA Negeri 2 Pangkalanbun Alumni</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('alumni.svg');
+            background-size: cover;
+            color: #f4f4f4; /* Light color for better contrast */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            margin-top: 18%;
+            margin-bottom: 12%;
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            animation: scrollDown 2s ease-in-out;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .alumni-card, .alumni-card2 {
+            background-color: transparent; /* Slightly transparent white */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px transparent;
+            display: flex;
+            margin: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 600px;
+            height: 300px; /* Fixed height for equal size */
+        }
+        .alumni-card {
+            margin-top: 50px;
+            margin-left: 62%;
+        }
+        .alumni-card2 {
+            margin-top: 200px;
+            margin-right: 58%;
+        }
+        .alumni-photo {
+            height: 150px;
+            object-fit: cover;
+            width: 150px;
+        }
+        .alumni-info {
+            padding: 20px;
+            text-align: left;
+            width: 50%;
+        }
+        .alumni-info h2 {
+            margin: 0;
+            font-size: 2em; /* Increased font size */
+            color: white; /* Darker color for better contrast */
+        }
+        .alumni-info p {
+            color: white; /* Darker gray for better contrast */
+            margin: 10px 0 0;
+        }
+        .alumni-info a {
+            color: white;
+            text-decoration: none;
+        }
+        .alumni-info a:hover {
+            text-decoration: underline;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes scrollDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            animation: bounce 2s infinite;
+            color: white;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            background-color: transparent;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 2px solid white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .back-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: scale(1.05);
+        }
+        /* Mobile layout */
+        @media (max-width: 768px) {
+            header {
+                margin-top: 40%;
+                margin-bottom: 100%;
+            }
+            .alumni-card, .alumni-card2 {
+                width: 90%;
+                height: auto;
+                flex-direction: column;
+                margin: 10px 0;
+            }
+            .alumni-photo {
+                width: 100%;
+                height: auto;
+            }
+            .alumni-info {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+            }
+            .alumni-info h2 {
+                font-size: 1.5em;
+            }
+            .alumni-info p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.sman2pbun.my.id" class="back-button">&#x2190; Back</a>
+    <header>
+        <h1>SMA Negeri 2 Pangkalanbun Alumni</h1>
+        <div class="scroll-down">&#x2193;</div>
+    </header>
+    <div class="container">
+        <div class="alumni-card2">
+            <img src="Untitled design (1).png" alt="Alumni Photo" class="alumni-photo">
+            <div class="alumni-info">
+                <h2><a href="#">John Doe</a></h2>
+                <p>Class of 2020</p>
+            </div>
+        </div>
+        <div class="alumni-card">
+            <img src="Untitled design (1).png" alt="Alumni Photo" class="alumni-photo">
+            <div class="alumni-info">
+                <h2><a href="#">Jane Smith</a></h2>
+                <p>Class of 2019</p>
+            </div>
+        </div>
+        <!-- Add more alumni cards as needed -->
+    </div>
+    <footer>
+        <p>&copy; 2019 - 2025 SMA Negeri 2 Pangkalan Bun | Kotawaringin Barat - Kalimantan Tengah</p>
+        <p class="contact">Contact us: 05326612326 | smandapbun@yahoo.co.id | smandapbun02@gmail.com</p>
+        <p2><a href='https://discordapp.com/users/1243882877947613307' target="_blank">Designed by Mita Puppet</a></p2>
+    </footer>
+</body>
+</html>

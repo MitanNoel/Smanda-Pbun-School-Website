@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="kemendikbud.png">
+    <title>Jelajahi Layanan Lain Dari Kemendikbud</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #5376d7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #fff;
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+        .button {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            padding: 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #800000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .button img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .button:hover {
+            background-color: #ca3636;
+            transform: scale(1.1);
+        }
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .back-button:hover {
+            background-color: #218838;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="kemendikbud.png" alt="Logo" class="logo">
+        <h1>Jelajahi Layanan Lain Dari Kemendikbud</h1>
+        <div class="button-container">
+            <button class="button" onclick="window.location.href='https://kemdikbud.go.id'"><img src="kemendikbud.png" alt="Logo 1" class="button-logo"> Kemendikbud</button>
+            <button class="button" onclick="window.location.href='https://sergur.kemdikbud.go.id'"><img src="sergu.png" alt="Logo 2" class="button-logo"> Sertifikasi Guru</button>
+            <button class="button" onclick="window.location.href='https://bse.kemdikbud.go.id'"><img src="bse.png" alt="Logo 3" class="button-logo"> Buku Sekolah Elektronik</button>
+            <button class="button" onclick="window.location.href='https://belajar.kemdikbud.go.id'"><img src="rumah.png" alt="Logo 4" class="button-logo"> Rumah Belajar</button>
+        </div>
+    </div>
+    <button class="back-button" onclick="window.location.href='https://sman2pbun.my.id'">Back to Main Page</button>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Untitled design (1).png">
+    <title>Berita - SMA Negeri 2 Pangkalan Bun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #800000;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            height: 50px;
+            margin-left: 20px;
+        }
+        header h1 {
+            flex-grow: 1;
+            text-align: center;
+        }
+        header .search-container {
+            margin-right: 20px;
+        }
+        header .search-container input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        header .search-container button {
+            padding: 5px;
+            background-color: white;
+            color: #800000;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        header .home-button {
+            margin-right: 20px;
+            background-color: white;
+            color: #800000;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .news-section {
+            margin-bottom: 40px;
+        }
+        .news-section h2 {
+            color: #800000;
+            border-bottom: 2px solid #800000;
+            padding-bottom: 10px;
+        }
+        .news-item {
+            background-size: cover;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .news-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .news-item a {
+            color: white;
+            text-decoration: none;
+        }
+        .live-news {
+            background-image: url('0.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .live-news .recording-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            animation: fadeInOut 1s infinite;
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        footer p, footer p2 {
+            margin: 5px 0;
+        }
+        footer .contact {
+            margin-top: 10px;
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            background-color: #800000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Untitled design (1).png" alt="Logo">
+        <h1>Berita SMANDA</h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button type="button" onclick="searchNews()">Search</button>
+        </div>
+        <button class="home-button" onclick="window.location.href='https://www.sman2pbun.my.id'">Home</button>
+    </header>
+    <div class="container">
+        <div class="news-section">
+            <h2>Top News</h2>
+            <div class="news-item" style="background-image: url('0.jpg');">
+                <a href="top-news1.html">
+                    <h3>Top News Title 1</h3>
+                    <p>Summary of the top news content goes here...</p>
+                </a>
+            </div>
+            <div class="news-item" style="background-image: url('0.jpg');">
+                <a href="top-news2.html">
+                    <h3>Top News Title 2</h3>
+                    <p>Summary of the top news content goes here...</p>
+                </a>
+            </div>
+        </div>
+        <div class="news-section">
+            <h2>All News</h2>
+            <div id="news-container"></div>
+            <div class="pagination">
+                <button onclick="navigatePage('prev')">Previous</button>
+                <button onclick="navigatePage('next')">Next</button>
+            </div>
+        </div>
+        <div class="live-news" onclick="window.location.href='live-news.html'">
+            <h2>Live News</h2>
+            <p>Live news content will be displayed here...</p>
+            <div class="recording-icon"></div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2019 - 2025 SMA Negeri 2 Pangkalan Bun | Kotawaringin Barat - Kalimantan Tengah</p>
+        <p class="contact">Contact us: 05326612326 | smandapbun@yahoo.co.id | smandapbun02@gmail.com</p>
+        <p2><a href='https://discordapp.com/users/1243882877947613307' target="_blank" style="color: white; font-size: smaller;">Designed by Mita Puppet</a></p2>
+    </footer>
+    <script>
+        let currentPage = 1;
+        const newsPerPage = 3;
+        const allNews = [
+            { title: "News Title 1", summary: "Summary of the news content goes here...", link: "news1.html", image: "0.jpg" },
+            { title: "News Title 2", summary: "Summary of the news content goes here...", link: "news2.html", image: "0.jpg" },
+            { title: "News Title 3", summary: "Summary of the news content goes here...", link: "news3.html", image: "0.jpg" },
+            { title: "News Title 4", summary: "Summary of the news content goes here...", link: "news4.html", image: "0.jpg" },
+            { title: "News Title 5", summary: "Summary of the news content goes here...", link: "news5.html", image: "0.jpg" },
+            { title: "News Title 6", summary: "Summary of the news content goes here...", link: "news6.html", image: "0.jpg" },
+            { title: "News Title 7", summary: "Summary of the news content goes here...", link: "news7.html", image: "0.jpg" }
+        ];
+
+        function displayNews(newsList) {
+            const newsContainer = document.getElementById('news-container');
+            newsContainer.innerHTML = '';
+            const start = (currentPage - 1) * newsPerPage;
+            const end = start + newsPerPage;
+            const paginatedNews = newsList.slice(start, end);
+
+            paginatedNews.forEach(news => {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-item';
+                newsItem.style.backgroundImage = `url('${news.image}')`;
+                newsItem.innerHTML = `
+                    <a href="${news.link}">
+                        <h3>${news.title}</h3>
+                        <p>${news.summary}</p>
+                    </a>
+                `;
+                newsContainer.appendChild(newsItem);
+            });
+        }
+
+        function navigatePage(direction) {
+            if (direction === 'prev' && currentPage > 1) {
+                currentPage--;
+            } else if (direction === 'next' && currentPage * newsPerPage < allNews.length) {
+                currentPage++;
+            }
+            displayNews(allNews);
+        }
+
+        function searchNews() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const filteredNews = allNews.filter(news => news.title.toLowerCase().includes(searchInput));
+            currentPage = 1; // Reset to first page for search results
+            displayNews(filteredNews);
+        }
+
+        // Initial display
+        displayNews(allNews);
+    </script>
+</body>
+<script>
+    function isMobile() {
+        return /Mobi|Android/i.test(navigator.userAgent);
+    }
+
+    if (isMobile()) {
+        const mobileStyle = document.createElement('style');
+        mobileStyle.innerHTML = `
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+            header {
+                background-color: #800000;
+                color: white;
+                padding: 10px;
+                text-align: center;
+            }
+            header img {
+                height: 40px;
+                margin-left: -5px;
+            }
+            header h1 {
+                font-size: 1.2em;
+            }
+            header .search-container {
+                margin-top: 10px;
+            }
+            header .search-container input[type="text"] {
+                width: 150%;
+                padding: 5px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
+            header .search-container button {
+                padding: 5px;
+                background-color: white;
+                color: #800000;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-top: 10px;
+            }
+            header .home-button {
+                padding: 5px;
+                background-color: white;
+                color: #800000;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-top: 45px;
+            }
+            .container {
+                width: 95%;
+                margin: 10px auto;
+            }
+            .news-section h2 {
+                font-size: 1.5em;
+            }
+            .news-item {
+                background-size: cover;
+                color: white;
+                padding: 10px;
+                margin-bottom: 10px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+            .news-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            .news-item a {
+                color: white;
+                text-decoration: none;
+            }
+            .live-news {
+                background-image: url('0.jpg');
+                background-size: cover;
+                background-position: center;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                position: relative;
+            }
+            .live-news .recording-icon {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                width: 15px;
+                height: 15px;
+                background-color: red;
+                border-radius: 50%;
+                animation: fadeInOut 1s infinite;
+            }
+            footer {
+                background-color: #800000;
+                color: white;
+                text-align: center;
+                padding: 10px 0;
+                margin-top: 10px;
+            }
+            footer p, footer p2 {
+                margin: 5px 0;
+            }
+            footer .contact {
+                margin-top: 10px;
+            }
+            .pagination {
+                text-align: center;
+                margin-top: 10px;
+            }
+            .pagination button {
+                background-color: #800000;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                margin: 0 5px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+        `;
+        document.head.appendChild(mobileStyle);
+    }
+</script>
+</html>

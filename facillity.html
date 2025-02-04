@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Untitled design (1).png">
+    <title>Fasilitas - SMA Negeri 2 Pangkalan Bun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #800000;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            height: 50px;
+            margin-left: 20px;
+        }
+        header h1 {
+            flex-grow: 1;
+            text-align: center;
+        }
+        header .home-button {
+            margin-right: 20px;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header .home-button img {
+            width: 20px;
+            height: 20px;
+            display: block;
+            margin-right: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .facility-section {
+            margin-bottom: 40px;
+        }
+        .facility-section h2 {
+            color: #800000;
+            border-bottom: 2px solid #800000;
+            padding-bottom: 10px;
+        }
+        .facility-box {
+            display: inline-block;
+            width: 22%;
+            margin: 1%;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .facility-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .facility-box h3 {
+            color: #800000;
+        }
+        .facility-box p {
+            font-size: 2em;
+            margin: 0;
+            color: #800000;
+        }
+        .album-section {
+            margin-top: 40px;
+        }
+        .album-section h2 {
+            color: #800000;
+            border-bottom: 2px solid #800000;
+            padding-bottom: 10px;
+        }
+        .album-box {
+            display: none;
+            width: 30%;
+            margin: 1%;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .album-box img {
+            width: 100%;
+            height: auto;
+        }
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination button {
+            background-color: #800000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer .contact {
+            margin-top: 10px;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        /* Mobile layout */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+            header img {
+                margin: 0;
+                height: 40px;
+            }
+            header h1 {
+                margin: 10px 0;
+                font-size: 1.5em;
+            }
+            header .home-button {
+                margin: 10px 0;
+                width: 30px;
+                height: 30px;
+            }
+            header .home-button img {
+                width: 15px;
+                height: 15px;
+                margin-left: 17px;
+            }
+            .container {
+                width: 90%;
+            }
+            .facility-box {
+                width: 90%;
+                margin: 10px 0;
+            }
+            .album-box {
+                width: 90%;
+                margin: 10px 0;
+            }
+            footer {
+                padding: 20px 0;
+            }
+            footer p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Untitled design (1).png" alt="Logo">
+        <h1>SMAN 2 Pangkalanbun</h1>
+        <button class="home-button" onclick="window.location.href='https://www.sman2pbun.my.id'">
+            <img src="home.png" alt="Home">
+        </button>
+    </header>
+    <div class="container">
+        <h1 style="color: #800000;">Fasilitas</h1>
+        <div class="facility-section">
+            <div class="facility-box">
+                <h3>Lab</h3>
+                <p id="lab-count">0</p>
+            </div>
+            <div class="facility-box">
+                <h3>Perpustakaan</h3>
+                <p id="library-count">0</p>
+            </div>
+            <div class="facility-box">
+                <h3>Kelas</h3>
+                <p id="class-count">0</p>
+            </div>
+            <div class="facility-box">
+                <h3>Toilet</h3>
+                <p id="toilet-count">0</p>
+            </div>
+        </div>
+        <div class="album-section">
+            <h2>Album</h2>
+            <div class="album-box">
+                <img src="Untitled design (1).png" alt="Album 1">
+            </div>
+            <div class="album-box">
+                <img src="Untitled design (1).png" alt="Album 2">
+            </div>
+            <div class="album-box">
+                <img src="Untitled design (1).png" alt="Album 3">
+            </div>
+            <div class="album-box">
+                <img src="Untitled design (1).png" alt="Album 4">
+            </div>
+            <div class="album-box">
+                <img src="Untitled design (1).png" alt="Album 5">
+            </div>
+            <div class="album-box">
+                <img src="Untitled design (1).png" alt="Album 6">
+            </div>
+            <div class="album-box">
+                <img src="Untitled design (1).png" alt="Album 7">
+            </div>
+            <div class="pagination">
+                <button id="prevPage">Previous</button>
+                <button id="nextPage">Next</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2019 - 2025 SMA Negeri 2 Pangkalan Bun | Kotawaringin Barat - Kalimantan Tengah</p>
+        <p class="contact">Contact us: 05326612326 | smandapbun@yahoo.co.id | smandapbun02@gmail.com</p>
+        <p><a href='https://discordapp.com/users/1243882877947613307' target="_blank" style="color: white; font-size: smaller;">Designed by Mita Puppet</a></p>
+    </footer>
+    <!-- Modal structure -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Full Image">
+        </div>
+    </div>
+    <script>
+        function animateCount(id, start, end, duration) {
+            let range = end - start;
+            let current = start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            let obj = document.getElementById(id);
+            let timer = setInterval(function() {
+                current += increment;
+                obj.innerHTML = current;
+                if (current == end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            animateCount('lab-count', 0, 5, 2000);
+            animateCount('library-count', 0, 3, 2000);
+            animateCount('class-count', 0, 20, 2000);
+            animateCount('toilet-count', 0, 10, 2000);
+        });
+
+        const images = document.querySelectorAll('.album-box');
+        const prevPageButton = document.getElementById('prevPage');
+        const nextPageButton = document.getElementById('nextPage');
+        let currentPage = 1;
+        const itemsPerPage = 6;
+
+        function showPage(page) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            images.forEach((img, index) => {
+                img.style.display = (index >= start && index < end) ? 'inline-block' : 'none';
+            });
+        }
+
+        prevPageButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+
+        nextPageButton.addEventListener('click', () => {
+            if (currentPage < Math.ceil(images.length / itemsPerPage)) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+
+        showPage(currentPage);
+
+        // Modal functionality
+        const modal = document.getElementById('myModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close');
+
+        images.forEach(imageBox => {
+            imageBox.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modalImage.src = imageBox.querySelector('img').src;
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

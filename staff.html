@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Untitled design (1).png">
+    <title>Staff dan Guru</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #800000;
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .teacher-box {
+            width: 150px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            color: #800000;
+            transition: transform 0.3s;
+        }
+        .teacher-box img {
+            width: 100%;
+            height: auto;
+        }
+        .teacher-box:hover {
+            transform: scale(1.1);
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            color: #800000;
+        }
+        .contact {
+            margin: 5px 0;
+        }
+        .home-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .home-button img {
+            width: 24px;
+            height: 24px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            color: #800000;
+            padding: 20px;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            width: 300px;
+            text-align: left;
+        }
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: white;
+            background-color: #800000;
+            border: none;
+            padding: 5px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="home-button" onclick="window.location.href='https://sman2pbun.my.id'">
+        <img src="home.png" alt="Home">
+    </div>
+    <h1>Staff dan Guru</h1>
+    <h2>SMA Negeri 2 Pangkalan Bun</h2>
+    <div class="container">
+        <!-- Teacher boxes will be generated here -->
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+        <div class="teacher-box" onclick="showInfo('Teacher 1', 'Subject 1', 'Full information about Teacher 1')">
+            <img src="Untitled design (1).png" alt="Teacher 1">
+            <p>Teacher 1</p>
+            <p>Subject 1</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2019 - 2025 SMA Negeri 2 Pangkalan Bun | Kotawaringin Barat - Kalimantan Tengah</p>
+        <p class="contact">Contact us: 05326612326 | smandapbun@yahoo.co.id | smandapbun02@gmail.com</p>
+        <p2><a href='https://discordapp.com/users/1243882877947613307' target="_blank" style="color: #800000; font-size: smaller;">Designed by Mita Puppet</a></p2>
+    </footer>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <div id="popup-content"></div>
+    </div>
+
+    <script>
+        function showInfo(name, subject, info) {
+            const popupContent = document.getElementById('popup-content');
+            popupContent.innerHTML = `<h3>${name}</h3><p>${subject}</p><p>${info}</p>`;
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html></div>

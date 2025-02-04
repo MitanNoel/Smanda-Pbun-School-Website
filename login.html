@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Untitled design (1).png">
+    <title>SMA Negeri 2 Pangkalan Bun - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+        }
+        .header img {
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+        }
+        .header h1 {
+            color: #800000;
+            margin: 10px 0;
+        }
+        .header h2 {
+            color: #800000;
+            margin: 5px 0;
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            animation: slideIn 1s;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #800000;
+        }
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 15px;
+            margin: 10px 0;
+            margin-left: -6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container input[type="password"] {
+            margin-bottom: 20px;
+        }
+        .login-container input[type="submit"] {
+            background-color: #800000;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #660000;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+            .header img {
+                width: 40px;
+                height: 40px;
+            }
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .header h2 {
+                font-size: 1em;
+            }
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            background-color: #800000;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            font-size: 0.8em;
+        }
+        footer p, footer p2 {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #800000;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            text-align: center;
+        }
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #800000;
+        }
+        .popup .message {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #800000;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth <= 600) {
+                document.body.classList.add('mobile');
+            } else {
+                document.body.classList.add('pc');
+            }
+
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function(event) {
+                // event.preventDefault();
+                const email = form.email.value;
+                const password = form.password.value;
+
+                // Use AJAX to submit the form data
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'login_process.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            window.location.href = 'access.html';
+                        } else {
+                            const popup = document.querySelector('.popup');
+                            popup.style.display = 'block';
+                        }
+                    }
+                };
+                xhr.send(`email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+            });
+
+            const closeBtn = document.querySelector('.popup .close-btn');
+            closeBtn.addEventListener('click', function() {
+                const popup = document.querySelector('.popup');
+                popup.style.display = 'none';
+            });
+        });
+    </script>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="0vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="header">
+        <img src="Untitled design (1).png" alt="Left Logo">
+        <img src="kemendikbud.png" alt="Right Logo">
+        <h1>SMA Negeri 2 Pangkalan Bun</h1>
+        <h2>#SMANDABERDASI</h2>
+    </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="login_process.php" method="post">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <div class="popup">
+        <span class="close-btn">&times;</span>
+        <div class="message">Wrong Password</div>
+    </div>
+    <footer>
+        <p>&copy; 2019 - 2025 SMA Negeri 2 Pangkalan Bun | Kotawaringin Barat - Kalimantan Tengah</p>
+        <p class="contact">Contact us: 05326612326 | smandapbun@yahoo.co.id | smandapbun02@gmail.com</p>
+        <p2><a href='https://discordapp.com/users/1243882877947613307' target="_blank">Designed by Mita Puppet</a></p2>
+    </footer>
+</body>
+</html>
